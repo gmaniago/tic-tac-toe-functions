@@ -8,9 +8,19 @@
  * The function should be case insensitive, so 'one' and 'ONE' should both
  * result in true.
  */
-function validateGameType(gameTypeString) {
 
+function validateGameType(gameTypeString) {
+	if (typeof gameTypeString === 'object') {
+		return false;
+	}
+	if (gameTypeString == 1 || gameTypeString.toLowerCase() === 'one') {
+		return 1;
+	} else if (gameTypeString == 2 || gameTypeString.toLowerCase() === 'two') {
+		return 2;
+	}
+	return false;
 }
+
 
 /*
  * Returns the players name if it is a valid name. Valid names must only contain
@@ -18,14 +28,31 @@ function validateGameType(gameTypeString) {
  * false if the name is not valid.
  */
 function validateName(name) {
-
+	if(name ==''||typeof name =='object'){
+		return false;
+	}else{
+		name.toLowerCase();
+		for(var i=0; i<name.length;i++){
+			if(name[i].fromCharCode<57||name[i].fromCharCode>48){
+			return false;
+			}
+		}
+	}
+	return name;
 }
+
 
 /*
  * Randomly generates and returns a name for a computer player.
  */
 function generateComputerName() {
-
+	var text='';
+	var allowed='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	
+	for( var i=0; i<5; i++){
+		text += allowed.charAt(Math.floor(Math.random()*allowed.length));
+	}
+	return text;
 }
 
 /*
@@ -116,7 +143,11 @@ function getEmptySpaceCount(gameBoard) {
  * 'O' and vice versa.
  */
 function getNextPlayer(currentPlayer) {
-
+	if(currentPlayer === 'X') {
+		return currentPlayer = 'O';
+	} else if (currentPlayer === 'O') {
+		return currentPlayer = 'X';
+	}
 }
 
 /*

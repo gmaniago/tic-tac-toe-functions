@@ -3,21 +3,6 @@ var expect = require('chai').expect;
 var gameFunctions = require('../scripts/gameFunctions.js');
 
 describe('getEmptySpaceCount', function() {
-	var gameBoard1 = [
-		[' ', 'X', ' '],
-		[' ', ' ', ' '],
-		[' ', ' ', ' ']
-	];
-	var gameBoard2 = [
-		[' ', 'X', ' '],
-		['O', 'X', ' '],
-		[' ', 'O', ' ']
-	];
-	var gameBoard3 = [
-		[' ', 'X', ' ', ' '],
-		['O', 'X', ' ', ' '],
-		[' ', 'O', ' ', ' ']
-	];
 	it('should exist', function() {
 		expect(gameFunctions.getEmptySpaceCount).not.to.be.undefined;
 	});
